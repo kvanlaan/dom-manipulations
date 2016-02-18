@@ -35,9 +35,7 @@ document.querySelector("#blow-up button").addEventListener('click',function(){
   // TASK #4}
 
 
-
-
-var circle = document.querySelector(".circle, .answer-box")
+var circle = document.querySelector("div .circle-red")
 var circleStyles = window.getComputedStyle(circle)
 
 var doublePx = function(pxValue) {
