@@ -34,26 +34,57 @@ document.querySelector("#color-circle button").addEventListener('click',function
 document.querySelector("#blow-up button").addEventListener('click',function(){
   // TASK #4}
 
-outputString = ""
-var circle = document.querySelector(".circle-red")
 
-var oldWidth = parseInt(circle.style.width)
-if (oldWidth < 320px ) {
-  circle.style.width = (oldWidth * 2) 
-  var newWidth = circle.style.width
-  var finalWidth = outputString + "px"
-  return finalWidth
+
+
+var circle = document.querySelector(".circle, .answer-box")
+var circleStyles = window.getComputedStyle(circle)
+
+var doublePx = function(pxValue) {
+  var doubledInt = parseInt(pxValue) * 2
+  return doubledInt + "px"  
 }
-else {
-  circle.style.width = "40px" 
-  return circle.style.width
-}
+
+circle.style.width = doublePx(circleStyles.width)
+circle.style.height = doublePx(circleStyles.height)
+
 })
+
+/////
+
 
 document.querySelector("#remove button").addEventListener('click',function(){
   // TASK #5
 })
 
+ Array.prototype.contains = function(el) {
+  return this.indexOf(el) !== -1
+}
+
+var isDone = function(choreElement) {
+  console.log(choreElement.classList)
+  // is "done" in the classList?   
+  for (var i = 0; i < choreElement.classList.length; i ++) {
+    if (choreElement.classList[i] === 'done') {
+      return true
+    }
+  }
+  return false
+}
+
+var choresContainer = document.querySelector("#box5 ul")
+
+var completedChoresUl = document.querySelector('#box5s ul')
+
+var chores = choresContainer.querySelectorAll('li')
+
+for (var i = 0; i < chores.length; i ++) {
+  var choreNode = chores[i]
+  if (isDone(choreNode)) {
+    choresContainer.removeChild(choreNode)
+    completedChoresUl.appendChild(choreNode)
+  }
+}
 
 document.querySelector("#reverse-squares button").addEventListener('click',function(){
   // TASK #6
