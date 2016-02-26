@@ -119,21 +119,19 @@ for (var i = 0; i < text.length; i ++) {
 document.querySelector("#cycle-image button").addEventListener('click',function(){
   // TASK #8
 
-var cityImage = document.querySelector("#city-image")
+var cityImage = document.querySelector("#city-img")
 
-var cityImagesrc= document.getElementById("#city-image").src;
 
-var lastNum = cityImagesrc[cityImagesrc.length-1]
-    var newString = ""
-    for (var i=0; i < cityImagesrc.length-1; i++){
-        var char = cityImagesrc[i]
-        newString = newString + char 
-        }
+var length  = cityImage.src.length
+
+var lastNum = cityImage.src.substring(length-1)
+
+cityImage.src = cityImage.src.substring(0, [length-1])
 
 lastNum = parseInt(lastNum) + 1
 
-var stringNum = lastNum.toString()
-cityImagesrc = newString + stringNum
+cityImage.src += lastNum
 
 
 })
+
